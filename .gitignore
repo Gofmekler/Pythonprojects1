@@ -1,2 +1,6 @@
 
 .idea/vcs.xml
+*.txt
+venv/Lib/site-packages/numpy-1.22.1.dist-info/INSTALLER
+*.xml
+*.iml
