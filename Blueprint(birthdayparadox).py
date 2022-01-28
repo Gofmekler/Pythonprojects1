@@ -6,7 +6,7 @@ from datetime import *
 # returns list of random birthdays dates
 def GetBirthdays(numberOfBirthdays):
     birthdays = []
-    for i in range(numberOfBirthdays):
+    for p in range(numberOfBirthdays):
         startOfYear = date(2001, 1, 1)
         randomNumberOfDays = timedelta(randint(0, 364))
         birthday = startOfYear + randomNumberOfDays
@@ -44,11 +44,25 @@ for i, birthday in enumerate(birthdays):
 print()
 print()
 match = getMatch(birthdays)
-print('In this simulat,', end= '')
-if match != None:
+print('In this simulat,', end='')
+if match is not None:
     monthName = Month[match.month - 1]
     dataText = "{}{}".format(monthName, match.day)
     print("multiple people have a birthday on", dataText)
 else:
     print("there are no match")
 print()
+print("Generating", numBdays, " random bday 100000 times..")
+input("press enter to begin ")
+print("another 100000 simulations")
+simMatch = 0
+for i in range(100000):
+    if i % 10000 == 0:
+        print(i, "simulations run..")
+    birthdays = GetBirthdays(numBdays)
+    if getMatch(birthdays) is not None:
+        simMatch = simMatch + 1
+print("100000 simulations run")
+probability = round(simMatch / 100000 * 100, 2)
+print("out of 100000 simulations of", numBdays, "people, there was a")
+print("matching bdays in that group", simMatch, " times")
